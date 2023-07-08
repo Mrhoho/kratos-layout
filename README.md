@@ -1,5 +1,26 @@
 # Kratos Project Template
 
+## Custom
+### Add protoc-gen-validate
+```
+// Makefile
+
+init:
+    go install github.com/envoyproxy/protoc-gen-validate@latest // Add this line
+
+api:
+    --validate_out=lang=go,paths=source_relative:./api \ // Add this line
+
+// internal/server/middleware.go
+validate.Validator() // add this line
+```
+### Add config env source
+```
+// cmd/main.go
+env.NewSource("KRATOS_"), // Add this line
+```
+
+
 ## Install Kratos
 ```
 go install github.com/go-kratos/kratos/cmd/kratos/v2@latest
