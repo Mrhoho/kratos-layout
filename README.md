@@ -20,6 +20,11 @@ validate.Validator() // add this line
 env.NewSource("KRATOS_"), // Add this line
 ```
 
+### Add ko layer
+internal/ko
+
+### Remove Dockerfile
+Use ko to build the image
 
 ## Install Kratos
 ```
