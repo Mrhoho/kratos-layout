@@ -5,7 +5,7 @@ import (
 
 	v1 "github.com/go-kratos/kratos-layout/api/helloworld/v1"
 	"github.com/go-kratos/kratos-layout/internal/biz"
-	"github.com/go-kratos/kratos-layout/internal/ko"
+	"github.com/go-kratos/kratos-layout/internal/bo"
 )
 
 // GreeterService is a greeter service.
@@ -22,7 +22,7 @@ func NewGreeterService(uc *biz.GreeterUsecase) *GreeterService {
 
 // SayHello implements helloworld.GreeterServer.
 func (s *GreeterService) SayHello(ctx context.Context, in *v1.HelloRequest) (*v1.HelloReply, error) {
-	g, err := s.uc.CreateGreeter(ctx, &ko.Greeter{Hello: in.Name})
+	g, err := s.uc.CreateGreeter(ctx, &bo.Greeter{Hello: in.Name})
 	if err != nil {
 		return nil, err
 	}

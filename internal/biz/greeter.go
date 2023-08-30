@@ -5,7 +5,7 @@ import (
 
 	v1 "github.com/go-kratos/kratos-layout/api/helloworld/v1"
 
-	"github.com/go-kratos/kratos-layout/internal/ko"
+	"github.com/go-kratos/kratos-layout/internal/bo"
 	"github.com/go-kratos/kratos/v2/errors"
 	"github.com/go-kratos/kratos/v2/log"
 )
@@ -17,11 +17,11 @@ var (
 
 // GreeterRepo is a Greater repo.
 type GreeterRepo interface {
-	Save(context.Context, *ko.Greeter) (*ko.Greeter, error)
-	Update(context.Context, *ko.Greeter) (*ko.Greeter, error)
-	FindByID(context.Context, int64) (*ko.Greeter, error)
-	ListByHello(context.Context, string) ([]*ko.Greeter, error)
-	ListAll(context.Context) ([]*ko.Greeter, error)
+	Save(context.Context, *bo.Greeter) (*bo.Greeter, error)
+	Update(context.Context, *bo.Greeter) (*bo.Greeter, error)
+	FindByID(context.Context, int64) (*bo.Greeter, error)
+	ListByHello(context.Context, string) ([]*bo.Greeter, error)
+	ListAll(context.Context) ([]*bo.Greeter, error)
 }
 
 // GreeterUsecase is a Greeter usecase.
@@ -36,7 +36,7 @@ func NewGreeterUsecase(repo GreeterRepo, logger log.Logger) *GreeterUsecase {
 }
 
 // CreateGreeter creates a Greeter, and returns the new Greeter.
-func (uc *GreeterUsecase) CreateGreeter(ctx context.Context, g *ko.Greeter) (*ko.Greeter, error) {
+func (uc *GreeterUsecase) CreateGreeter(ctx context.Context, g *bo.Greeter) (*bo.Greeter, error) {
 	uc.log.WithContext(ctx).Infof("CreateGreeter: %v", g.Hello)
 	return uc.repo.Save(ctx, g)
 }
